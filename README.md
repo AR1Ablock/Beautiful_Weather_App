@@ -11,7 +11,7 @@ This app has some unique features.
 * Weekly 5 Days Weather condition.
 * Currnt Temp, Feels Like, Humidity, Atmostphere Pressure, SunSet, Sunrise Time, Air Quality, Visibility & Weekly 5 days Wind Speed.
 ![Screenshot from 2023-09-07 04-00-20](https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/3ecc7912-f9c6-4fd0-96c0-e6809139cd30)
-
+-----------------------------------------------------------------------------------------------------------------------------------------------
 ![Screenshot from 2023-09-07 04-00-46](https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/054a6389-9511-4a44-9a3e-3c1f47150385)
 
 * **It has a search bar which shows multiple locations of same names & Current Location Button.**
