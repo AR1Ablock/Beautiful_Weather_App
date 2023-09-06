@@ -19,6 +19,8 @@ This app has some unique features.
 
 * **Icons Change according to weather Current And Future Weather condtions.**
 
+* **It will also change AQI Index Icon Color & Text According to Locations CUrrent Atmosphere Air Quaity.**
+
 * **The most Good Part is Animtated Background Change According to Weather Conditions.**
 
 * **This app is also responsive but not very much due to i focused on logic in this app more other aspects.**
