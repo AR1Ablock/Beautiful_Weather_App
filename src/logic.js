@@ -437,7 +437,6 @@ async function GettingHourlyAndWeeklyWeather() {
                 }
             }
         }
-        document.querySelector('#app').classList.remove('SetHeight');
         document.querySelector('.loading').classList.remove('LoadingCompleted');
     } catch (error) {
         console.log(error.message);
@@ -599,11 +598,9 @@ function RunAllFUnctions() {
     try {
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.loading').classList.add('LoadingCompleted');
-            document.querySelector('#app').classList.add('SetHeight');
         });
         if (justRunOneTime) {
             document.querySelector('.loading').classList.add('LoadingCompleted');
-            document.querySelector('#app').classList.add('SetHeight');
         }
         hourlyTempArray.value.splice(0, hourlyTempArray.value.length);
         WeekyDaysTempArray.value.splice(0, WeekyDaysTempArray.value.length);
