@@ -1,7 +1,7 @@
 <template>
-  <dialog open="" class="loading">
+  <div open="" class="loading">
     <div></div>
-  </dialog>
+  </div>
 
   <div class="container">
     <video autoplay loop muted class="bgvideo" :src="ChangeBackgroundVideo()">
