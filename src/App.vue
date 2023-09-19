@@ -68,7 +68,7 @@
         <div class="smallPanel_2">
 
           <div class="day" v-for="(item, index) in WeekyDaysTempArray" :key="index">
-            <h2> <span> <img :src="ChangeImage(item.Condition, undefined)" alt=""> </span> {{ item.temp }}°C</h2>
+            <h2> <p>{{item.rainChances}}%</p>  <span> <img :src="ChangeImage(item.Condition, undefined)" alt=""> </span> {{ item.temp }}°C</h2>
             <p class="WeekDay">{{ item.Date }} {{ item.Month }}</p>
             <p>{{ item.Day }}</p>
           </div>

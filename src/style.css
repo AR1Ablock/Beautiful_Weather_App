@@ -1,4 +1,4 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: black;
@@ -6,7 +6,7 @@ body{
     overflow-x: hidden;
 }
 
-.loading{
+.loading {
     z-index: 99;
     width: 100vw;
     height: 100vh;
@@ -16,13 +16,14 @@ body{
     justify-content: center;
     display: none;
     position: fixed;
+    overflow: hidden;
 }
 
-.LoadingCompleted{
+.LoadingCompleted {
     display: flex;
 }
 
-.loading div{
+.loading div {
     height: 5vmin;
     border-top: 5px solid #ff5e00;
     border-bottom: 5px solid #41ff00;
@@ -33,54 +34,55 @@ body{
     animation: loading linear infinite 1s;
 }
 
-@keyframes loading{
-    from{
+@keyframes loading {
+    from {
         transform: rotate(0deg);
     }
-    to{
+
+    to {
         transform: rotate(360deg);
     }
 }
 
-.start{
-width: 90%;
-display: flex;
-align-items: center;
-justify-content:space-between;
-margin-left: 5%;
-position: absolute;
-top: 0;
-font-family: sans-serif;
+.start {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+    position: absolute;
+    top: 0;
+    font-family: sans-serif;
 }
 
-.cityname{
+.cityname {
     color: #484848;
 }
 
-.start p{
-   font-size: 5vmin;
-   font-weight: bold; 
-   margin: 1vmin 0;
-   display: flex;
-   align-items: center;
+.start p {
+    font-size: 5vmin;
+    font-weight: bold;
+    margin: 1vmin 0;
+    display: flex;
+    align-items: center;
 }
 
-.start p img{
+.start p img {
     transform: translateY(.5vmin);
     width: 5vmin;
 }
 
-.start h1{
+.start h1 {
     font-size: 4vmin;
     color: rgb(255, 255, 255);
 }
 
-.inputSearchCntrylistCon{
+.inputSearchCntrylistCon {
     display: flex;
     justify-content: center;
 }
 
-.start .SearchInput{
+.start .SearchInput {
     border: none;
     outline: none;
     padding: .9vmin;
@@ -90,7 +92,7 @@ font-family: sans-serif;
     font-size: 2vmin;
 }
 
-.showhide{
+.showhide {
     background: #ffffffcf;
     color: black;
     border-radius: 2vmin;
@@ -101,7 +103,7 @@ font-family: sans-serif;
     transform: translateY(4.5vmin);
 }
 
-.locationslist{
+.locationslist {
     border-bottom: 2px solid aqua;
     cursor: pointer;
     display: flex;
@@ -110,19 +112,19 @@ font-family: sans-serif;
     padding: .5vmin 1vmin;
 }
 
-.locationslist:hover{
+.locationslist:hover {
     background-color: #00c3ff;
     transform: scale(1.05);
     transition-timing-function: linear;
     transition: all .3s;
 }
 
-.locationslist p{
+.locationslist p {
     font-size: 2.6vmin !important;
     font-family: sans-serif;
 }
 
-.SearchBtn{
+.SearchBtn {
     padding: .8vmin 2vmin;
     border: none;
     outline: none;
@@ -134,7 +136,7 @@ font-family: sans-serif;
     color: white;
 }
 
-.LocationBtn{
+.LocationBtn {
     padding: .8vmin 1vmin .3vmin .8vmin;
     font-size: 5vmin;
     font-family: sans-serif;
@@ -147,27 +149,29 @@ font-family: sans-serif;
     transform: translateY(.5vmin);
 }
 
-.SearchBtn:hover , .LocationBtn:hover{
+.SearchBtn:hover,
+.LocationBtn:hover {
     background-color: rgb(255, 172, 84);
     transition-timing-function: ease-in-out;
-    transition: all .3s;   
+    transition: all .3s;
 }
 
-.SearchBtn:active, .LocationBtn:active{
+.SearchBtn:active,
+.LocationBtn:active {
     background-color: rgb(255, 172, 84);
     transform: scale(.8);
     transition-timing-function: ease-in-out;
-    transition: all .5s; 
+    transition: all .5s;
 }
 
-.bgvideo{
+.bgvideo {
     height: 50vh;
     width: 100%;
     position: relative;
     object-fit: cover;
 }
 
-.weatherDetails{
+.weatherDetails {
     position: relative;
     font-family: sans-serif;
     display: grid;
@@ -178,68 +182,73 @@ font-family: sans-serif;
     height: 0;
 }
 
-.Date{
+.Date {
     display: none;
 }
 
 
-.bgtemp{
+.bgtemp {
     position: relative;
     font-size: 8vmin;
     font-weight: bold;
     font-style: italic;
 }
 
-.bgcondition{
+.bgcondition {
     position: relative;
     font-size: 4.5vmin;
     font-style: italic;
     right: 3vmin;
 }
 
-.hourlytime{
+.hourlytime {
     display: flex;
-    gap: 0 4vmin;
+    gap: 0 2.4vmin;
     position: relative;
-    
 }
 
-.hourlytime div{
+.hourlytime div {
     text-align: center;
     font-size: 2.5vmin;
     font-family: sans-serif;
+    letter-spacing: .5px;
+    color: #62cff7;
+    /*    color: #00a8ff; */
+    font-weight: 600;
+    min-width: 11vmin;
+    transform: translateX(-1vmin);
 }
 
-.hourlytime *{
+.hourlytime * {
     margin: .3vmin 0;
 }
 
-.img img{
+.img img {
     width: 6vmin;
 }
 
 .wrapper {
-width: 95vw;
-/* background-color: rgb(82, 44, 44); */
-margin: 0 2.5vw;
-position: relative;
-bottom: .5vmin;
-display: flex;
+    width: 95vw;
+    /* background-color: rgb(82, 44, 44); */
+    margin: 0 2.5vw;
+    position: relative;
+    bottom: .5vmin;
+    display: flex;
 
 }
 
-.smallPanel{
-/*     background-color: rgb(49, 109, 89); */
+.smallPanel {
+    /*     background-color: rgb(49, 109, 89); */
     width: 40vw;
     margin: 0 5vmin;
     padding: 5vmin 0;
     text-align: justify;
     display: flex;
     flex-direction: column;
-   text-align: center;
+    text-align: center;
 }
 
-.smallPanel_1{
+.smallPanel_1 {
     background-color: rgb(18, 114, 166);
     border-radius: 1vmin;
     padding: 2vmin;
@@ -251,15 +260,15 @@ display: flex;
 
 }
 
-.smallPanel_1 *{
+.smallPanel_1 * {
     margin: .8vmin;
 }
 
-.smallPanel_1 h2{
+.smallPanel_1 h2 {
     font-size: 3vmin;
 }
 
-.smallPanel_1 h1{
+.smallPanel_1 h1 {
     font-size: 8vmin;
     display: flex;
     align-items: center;
@@ -267,7 +276,7 @@ display: flex;
     border-bottom: solid rgb(255, 255, 255) 2px;
 }
 
-.smallPanel_1 div{
+.smallPanel_1 div {
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -276,23 +285,23 @@ display: flex;
     font-size: 2.3vmin;
 }
 
-.smallPanel_1 h1 span img{
+.smallPanel_1 h1 span img {
     width: 10vmin;
     transform: translateY(1vmin);
 }
 
-.smallPanel_1 p span img{
+.smallPanel_1 p span img {
     transform: translateY(2.5vmin);
     width: 4vmin;
 }
 
-.SmallPanelHeading{
+.SmallPanelHeading {
     font-family: sans-serif;
     font-size: 4vmin;
 }
 
 
-.smallPanel_2{
+.smallPanel_2 {
     background-color: chocolate;
     border-radius: 1vmin;
     min-height: 40vmin;
@@ -300,9 +309,10 @@ display: flex;
     font-weight: bold;
     grid-template-rows: repeat(4, 1fr);
     padding: 1vmin 0;
+    font-family: ui-sans-serif;
 }
 
-.day{
+.day {
     transform: translateY(.7vmin);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -310,36 +320,51 @@ display: flex;
 }
 
 .day h2 {
-    transform: translateY(-1.2vmin);
     margin: 0;
+    display: flex;
+    font-size: 3vmin;
+    font-family: sans-serif;
+    margin-left: 4vmin !important;
 }
 
-.day h2 span img{
+.day h2 * {
+    margin: 0 .2vmin !important;
+}
+
+.day h2 p {
+    font-size: 1.8vmin;
+    padding: 0 .2vmin;
+}
+
+.day h2 span img {
     width: 4vmin;
     height: auto;
-    transform: translateY(.5vmin);
+    transform: translateY(-.5vmin);
 }
 
-.smallPanel_2 div, .smallPanel_2 h2, .smallPanel_2 h2 *, .smallPanel_2 p {
+.smallPanel_2 div,
+.smallPanel_2 h2,
+.smallPanel_2 h2 *,
+.smallPanel_2 p {
     margin: 0;
 }
 
 /* 2nd Panel */
 
-.BigPanelHeading{
+.BigPanelHeading {
     text-align: center;
     font-family: sans-serif;
     font-size: 5vmin;
 }
 
-.SecondLastBigPanel{
-  width: 50vw;
-/*   background-color: rebeccapurple; */
+.SecondLastBigPanel {
+    width: 50vw;
+    /*   background-color: rebeccapurple; */
 }
 
 
 /*  ................... */
-.Wind_Sun_Humi_Pressure{
+.Wind_Sun_Humi_Pressure {
     display: grid;
     gap: 5vmin;
     width: 50vw;
@@ -348,17 +373,17 @@ display: flex;
     text-align: center;
 }
 
-.Wind_Sun_Humi_Pressure p{
-        font-size: 2.2vmin;
-        margin: 1vmin;
-        font-weight: bold;
+.Wind_Sun_Humi_Pressure p {
+    font-size: 2.2vmin;
+    margin: 1vmin;
+    font-weight: bold;
 }
 
-.Wind_Sun_Humi_Pressure h1{
-        font-size: 3.5vmin;
+.Wind_Sun_Humi_Pressure h1 {
+    font-size: 3.5vmin;
 }
 
-.WHSP_Parts_1{
+.WHSP_Parts_1 {
     background-color: goldenrod;
     height: 20vh;
     text-align: center;
@@ -369,14 +394,14 @@ display: flex;
     justify-content: center;
 }
 
-.airindex{
+.airindex {
     display: flex;
     justify-content: space-around;
     font-size: 2.4vmin;
     font-weight: 600;
 }
 
-.airindex .good{
+.airindex .good {
     background-color: rgb(0 223 57);
     padding: .5vmin 1vmin;
     border-radius: 5vmin;
@@ -384,28 +409,28 @@ display: flex;
     transform: translateY(-.8vmin);
 }
 
-.airindex_info{
+.airindex_info {
     display: flex;
     justify-content: space-around;
 }
 
-.airindex_info h1{
+.airindex_info h1 {
     font-size: 3vmin;
     margin: 0 .5vmin;
     cursor: pointer;
 }
 
-.airindex_info h1 span{
+.airindex_info h1 span {
     font-size: 2vmin;
     margin: 0 0.3vmin;
 }
 
-.airindex_info span img{
+.airindex_info span img {
     width: 8vmin;
     transform: translateY(-1vmin) rotate(90deg);
 }
 
-.WHSP_Parts_2{
+.WHSP_Parts_2 {
     background-color: darkblue;
     height: 20vh;
     display: grid;
@@ -415,14 +440,14 @@ display: flex;
     align-items: center;
 }
 
-.WHSP_Parts_2 img{
+.WHSP_Parts_2 img {
     width: 7vmin;
     transform: translateY(1.5vmin);
     margin: 0 1vmin;
 }
 
 
-.WHSP_Parts{
+.WHSP_Parts {
     display: flex;
     height: 20vh;
     align-items: center;
@@ -433,20 +458,20 @@ display: flex;
     gap: .9vmin;
 }
 
-.WHSP_Parts img{
-  width: 5vmin;
-  transform: translateY(1.5vmin);
+.WHSP_Parts img {
+    width: 5vmin;
+    transform: translateY(1.5vmin);
 }
 
-.TimesHeading{
+.TimesHeading {
     text-align: start;
     font-size: 4.5vmin;
-    margin: 2vmin 0 ;
+    margin: 2vmin 0;
     font-family: sans-serif;
     text-align: center;
 }
 
-.times{
+.times {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     font-size: 2.6vmin;
@@ -454,63 +479,73 @@ display: flex;
     font-weight: bold;
 }
 
-.timesPart3{
+.timesPart3 {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     margin: .5vmin;
 }
 
-.timesPart3 img{
+.timesPart3 img {
     width: 5vmin;
 }
 
-.timesPart3 .windDiv{
-  text-align: center;
- background-color: lightseagreen;
- border-radius: 2vmin;
- margin: 0 10%;
- width: 85%;
+.timesPart3 .windDiv {
+    text-align: center;
+    background-color: lightseagreen;
+    border-radius: 2vmin;
+    margin: 0 10%;
+    width: 85%;
+}
+
+.timesPart3 .windDiv p {
+    font-size: 2.6vmin;
+    overflow-x: auto;
+}
+
+.windDiv p::-webkit-scrollbar {
+    display: none;
 }
 
 @media (min-width: 1250px) {
-.good{
-    height: 2.8vmin !important;
-}
+    .good {
+        height: 2.8vmin !important;
+    }
 
-.airindex_info span img {
-    width: 8vmin;
-    transform: translateX(1vmin) translateY(-1vmin) rotate(90deg);
-}
+    .airindex_info span img {
+        width: 8vmin;
+        transform: translateX(1vmin) translateY(-1vmin) rotate(90deg);
+    }
 }
 
 
 @media (max-width: 1250px) {
 
-    .Date{
+    .Date {
         display: none;
     }
 
-    .airindex_info span img{
+    .airindex_info span img {
         position: relative;
         left: 20%;
         transform: rotate(0) translateY(-1vmin);
     }
 
-    .times{
+    .times {
         grid-template-columns: repeat(1, 1fr);
         position: relative;
         top: 2%;
         right: 48vmin;
     }
-    .times div{
+
+    .times div {
         width: 17vmin;
     }
 
-    .timesPart3{
+    .timesPart3 {
         width: 85%;
     }
 
-    .TimesHeading{
+    .TimesHeading {
         position: relative;
         right: 10%;
         top: 1%;
@@ -518,104 +553,123 @@ display: flex;
     }
 
 
-    .Wind_Sun_Humi_Pressure{
+    .Wind_Sun_Humi_Pressure {
         display: block;
     }
 
-    .WHSP_Parts_1{
+    .WHSP_Parts_1 {
         border-radius: 15vmin;
     }
 
-    .WHSP_Parts_2{
+    .WHSP_Parts_2 {
         border-radius: 15vmin;
     }
 
-    .WHSP_Parts{
+    .WHSP_Parts {
         border-radius: 15vmin;
     }
-    
+
 }
 
 @media (max-width:880px) {
-.airindex_info span img{
-    width: 7vmin;
+    .airindex_info span img {
+        width: 7vmin;
+    }
 }
+
+@media (min-width:730px) and ((max-width:850px)) {
+    .day h2 {
+        margin-left: 0 !important;
+    }
 }
 
 @media (max-width:730px) {
 
-    .start{
+    .start {
         top: 1.5vmin;
     }
 
-    .SearchInput{
+    .SearchInput {
         height: 4vmin;
         width: 25vmin;
         font-size: 2.6vmin;
     }
 
 
-    .Date{
+    .Date {
         display: block;
         font-size: 3vmin;
         margin: 0;
     }
 
-    .Date p{
+    .Date p {
         margin: 0;
     }
 
-    .Date img{
+    .Date img {
         width: 3vmin;
     }
 
-    .showhide{
+    .showhide {
         transform: translateY(6vmin);
     }
 
-    .SearchBtn{
+    .SearchBtn {
         padding: 1vmin 2vmin;
         border: none;
         outline: none;
         font-size: 2.6vmin;
     }
 
-    .LocationBtn{
+    .LocationBtn {
         padding: .6vmin 1.3vmin .1vmin 1.3vmin;
         border-radius: 20vmin;
     }
 
 
-    .bgtemp{
+    .bgtemp {
         font-size: 12vmin;
         position: relative;
         top: 1vmin;
     }
 
-    .bgcondition{
+    .bgcondition {
         font-size: 6vmin;
     }
 
-    .hourlytime div{
+    .hourlytime div {
         font-size: 2.3vmin;
     }
 
-    .weatherDetails{
+    .hourlytime {
+        gap: 0 1.5vmin;
+    }
+
+    .day h2 {
+        font-size: 4vmin;
+        margin-left: 5vmin;
+    }
+
+    .day h2 p {
+        font-size: 2.5vmin;
+    }
+
+    .weatherDetails {
         bottom: 40vmin;
         gap: 3vmin;
     }
 
-    .smallPanel{
+    .smallPanel {
         position: relative;
         top: 67vmin;
         right: 2%;
     }
 
-    .smallPanel_1{
-      display: none;
+    .smallPanel_1 {
+        display: none;
     }
 
-    .smallPanel_2{
+    .smallPanel_2 {
         height: 53vmin;
         width: 95vmin;
         position: relative;
@@ -623,46 +677,47 @@ display: flex;
         font-size: 4vmin;
     }
 
-    .SmallPanelHeading{
+    .SmallPanelHeading {
         position: relative;
         left: 60%;
     }
 
-    .smallPanel_2 .day span img{
-        width: 5vmin;
+    .smallPanel_2 .day span img {
+        width: 6vmin;
     }
 
-    .SecondLastBigPanel{
+    .SecondLastBigPanel {
         position: relative;
         top: 61vmin;
         right: 53.5%;
         top: 0;
     }
 
-    .BigPanelHeading{
+    .BigPanelHeading {
         position: relative;
         left: 53%;
     }
 
-    .Wind_Sun_Humi_Pressure{
+    .Wind_Sun_Humi_Pressure {
         display: grid;
         gap: 2vmin;
     }
 
-    .Wind_Sun_Humi_Pressure p{
+    .Wind_Sun_Humi_Pressure p {
         font-size: 3.2vmin;
-}
+    }
 
-.Wind_Sun_Humi_Pressure h1{
+    .Wind_Sun_Humi_Pressure h1 {
         font-size: 3vmin;
         margin: 0 .3vmin;
-}
+    }
 
-.good{
-    height: 4vmin !important;
-}
+    .good {
+        height: 4vmin !important;
+    }
 
-    .WHSP_Parts_1, .WHSP_Parts_2{
+    .WHSP_Parts_1,
+    .WHSP_Parts_2 {
         width: 46vmin;
         border-radius: 2vmin;
         height: 25vmin;
@@ -672,7 +727,7 @@ display: flex;
         transform: translateY(-1vmin) rotate(90deg);
     }
 
-    .WHSP_Parts{
+    .WHSP_Parts {
         border-radius: 2vmin;
         height: 25vmin;
     }
@@ -682,15 +737,15 @@ display: flex;
         transform: translateY(1.5vmin);
     }
 
-    .TimesHeading{
+    .TimesHeading {
         position: relative;
         right: 13%;
         top: 70vmin;
         left: 72%;
         text-align: unset;
     }
-    
-    .times{
+
+    .times {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         font-size: 3.5vmin;
@@ -698,50 +753,60 @@ display: flex;
         top: 70vmin;
     }
 
-    .timesPart3{
+    .timesPart3 {
         gap: 5vmin;
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .relocate_1st_Part{
-        position: static;
-    }
-    .relocate_2nd_Part{
+    .relocate_1st_Part {
         position: static;
     }
 
-    .times div{
+    .relocate_2nd_Part {
+        position: static;
+    }
+
+    .times div {
         width: 24vmin;
     }
 
-    .times div img{
+    .times div img {
         width: 8vmin !important;
+    }
+
+    .timesPart3 .windDiv p {
+        font-size: 3.5vmin;
     }
 }
 
 
 @media (max-width: 240px) {
-    .weatherDetails{
+    .weatherDetails {
         bottom: 44vmin !important;
     }
 }
 
 /* Toogle Class */
-.Great{
+.Great {
     background-color: rgb(0, 149, 255) !important;
 }
-.Good{
+
+.Good {
     background-color: rgb(0, 238, 87) !important;
 }
-.Moderate{
+
+.Moderate {
     background-color: rgb(221, 221, 0) !important;
 }
-.Sensitive{
+
+.Sensitive {
     background-color: rgb(255, 136, 0) !important;
 }
-.Unhealthy{
+
+.Unhealthy {
     background-color: rgb(0, 64, 255) !important;
 }
-.Dangerous{
+
+.Dangerous {
     background-color: rgb(255, 0, 0) !important;
 }

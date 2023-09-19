@@ -37,6 +37,7 @@ let PerDayTempAverage = ref(0);
 let ObjForWeeklyTempArray = ref({});
 export let MultipleCountries = ref([]);
 let SRSSCT = ref({});
+let weatherRainChances = ref([]);
 
 
 
@@ -235,7 +236,7 @@ export function ChangeImage(summary, time) {
                 case 'Cloudy':
                 case 'Cloud':
                 case 'Clouds':
-                    return "https://cdn-icons-png.flaticon.com/128/1163/1163624.png";
+                    return "https://cdn-icons-png.flaticon.com/128/892/892313.png";
                 case 'Thunderstorm':
                 case 'Thunder Storm':
                 case 'Thunder storm':
@@ -344,6 +345,26 @@ export function AirQualityIndexColor() {
 
 
 
+function RainChancesPercentage(condition) {
+    try {
+    let isRain = 0;
+    let matchConditions = ['Rain shower', 'Rain', 'Raining', 'Rainy', 'Rainy shower', 'Drizzle', 'Showers', 'Shower', 'Hurricane'];
+    condition.forEach(element => {
+        console.log(element);
+        if (matchConditions.includes(element)) {
+            isRain += 1;
+        }
+    });
+    let result = (isRain / 8 * 100).toFixed(0);
+    return result;        
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+
+
+
 // main function to fetch Hourly  and weekly of 5 days data.
 async function GettingHourlyAndWeeklyWeather() {
     try {
@@ -363,6 +384,7 @@ async function GettingHourlyAndWeeklyWeather() {
         for (let j = 0; j <= 39; j++) {
             PerDayTempAverage.value += data.list[j].main.temp - 273.15;
             WeatherConditionCheckArray.value.push(data.list[j].weather[0].main);
+            weatherRainChances.value.push(data.list[j].weather[0].main);
 
             if (j == 7 || j == 15 || j == 23 || j == 31 || j == 39) {
 
@@ -373,11 +395,13 @@ async function GettingHourlyAndWeeklyWeather() {
                         Day: gettingCurrentDTMY(data.list[j - 3].dt, 0, 1, 0, 0, 0),
                         Date: gettingCurrentDTMY(data.list[j - 3].dt, 1, 0, 0, 0, 0),
                         Month: gettingCurrentDTMY(data.list[j - 3].dt, 0, 0, 1, 0, 0),
-                        Wind: data.list[j - 3].wind.speed
+                        Wind: data.list[j - 3].wind.speed,
+                        rainChances: RainChancesPercentage(weatherRainChances.value)
                     }
                     WeekyDaysTempArray.value.push(ObjForWeeklyTempArray.value);
                     PerDayTempAverage.value = 0;
                     WeatherConditionCheckArray.value.splice(0, WeatherConditionCheckArray.value.length);
+                    weatherRainChances.value.splice(0, weatherRainChances.value.length);
                 }
 
                 if (j == 15) {
@@ -387,11 +411,13 @@ async function GettingHourlyAndWeeklyWeather() {
                         Day: gettingCurrentDTMY(data.list[j - 3].dt, 0, 1, 0, 0, 0),
                         Date: gettingCurrentDTMY(data.list[j - 3].dt, 1, 0, 0, 0, 0),
                         Month: gettingCurrentDTMY(data.list[j - 3].dt, 0, 0, 1, 0, 0),
-                        Wind: data.list[j - 3].wind.speed
+                        Wind: data.list[j - 3].wind.speed,
+                        rainChances: RainChancesPercentage(weatherRainChances.value)
                     }
                     WeekyDaysTempArray.value.push(ObjForWeeklyTempArray.value);
                     PerDayTempAverage.value = 0;
                     WeatherConditionCheckArray.value.splice(0, WeatherConditionCheckArray.value.length);
+                    weatherRainChances.value.splice(0, weatherRainChances.value.length);
                 }
 
                 if (j == 23) {
@@ -401,11 +427,13 @@ async function GettingHourlyAndWeeklyWeather() {
                         Day: gettingCurrentDTMY(data.list[j - 3].dt, 0, 1, 0, 0, 0),
                         Date: gettingCurrentDTMY(data.list[j - 3].dt, 1, 0, 0, 0, 0),
                         Month: gettingCurrentDTMY(data.list[j - 3].dt, 0, 0, 1, 0, 0),
-                        Wind: data.list[j - 3].wind.speed
+                        Wind: data.list[j - 3].wind.speed,
+                        rainChances: RainChancesPercentage(weatherRainChances.value)
                     }
                     WeekyDaysTempArray.value.push(ObjForWeeklyTempArray.value);
                     PerDayTempAverage.value = 0;
                     WeatherConditionCheckArray.value.splice(0, WeatherConditionCheckArray.value.length);
+                    weatherRainChances.value.splice(0, weatherRainChances.value.length);
                 }
 
                 if (j == 31) {
@@ -415,11 +443,13 @@ async function GettingHourlyAndWeeklyWeather() {
                         Day: gettingCurrentDTMY(data.list[j - 3].dt, 0, 1, 0, 0, 0),
                         Date: gettingCurrentDTMY(data.list[j - 3].dt, 1, 0, 0, 0, 0),
                         Month: gettingCurrentDTMY(data.list[j - 3].dt, 0, 0, 1, 0, 0),
-                        Wind: data.list[j - 3].wind.speed
+                        Wind: data.list[j - 3].wind.speed,
+                        rainChances: RainChancesPercentage(weatherRainChances.value)
                     }
                     WeekyDaysTempArray.value.push(ObjForWeeklyTempArray.value);
                     PerDayTempAverage.value = 0;
                     WeatherConditionCheckArray.value.splice(0, WeatherConditionCheckArray.value.length);
+                    weatherRainChances.value.splice(0, weatherRainChances.value.length);
                 }
 
                 if (j == 39) {
@@ -429,11 +459,13 @@ async function GettingHourlyAndWeeklyWeather() {
                         Day: gettingCurrentDTMY(data.list[j - 3].dt, 0, 1, 0, 0, 0),
                         Date: gettingCurrentDTMY(data.list[j - 3].dt, 1, 0, 0, 0, 0),
                         Month: gettingCurrentDTMY(data.list[j - 3].dt, 0, 0, 1, 0, 0),
-                        Wind: data.list[j - 3].wind.speed
+                        Wind: data.list[j - 3].wind.speed,
+                        rainChances: RainChancesPercentage(weatherRainChances.value)
                     }
                     WeekyDaysTempArray.value.push(ObjForWeeklyTempArray.value);
                     PerDayTempAverage.value = 0;
                     WeatherConditionCheckArray.value.splice(0, WeatherConditionCheckArray.value.length);
+                    weatherRainChances.value.splice(0, weatherRainChances.value.length);
                 }
             }
         }
@@ -598,9 +630,11 @@ function RunAllFUnctions() {
     try {
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.loading').classList.add('LoadingCompleted');
+
         });
         if (justRunOneTime) {
             document.querySelector('.loading').classList.add('LoadingCompleted');
+
         }
         hourlyTempArray.value.splice(0, hourlyTempArray.value.length);
         WeekyDaysTempArray.value.splice(0, WeekyDaysTempArray.value.length);
