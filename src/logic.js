@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, onUnmounted } from "vue";
 
 // Videos
 import Cloudy from './assets/videos/Cloudy.mp4';
@@ -56,8 +56,7 @@ let ObjForWeeklyTempArray = ref({});
 export let MultipleCountries = ref([]);
 let SRSSCT = ref({});
 let weatherRainChances = ref([]);
-
-
+let IsCountriesListShowing = ref(false);
 
 
 // for get things time related things.
@@ -94,7 +93,7 @@ function gettingCurrentDTMY(string, date, week, month, time, Hours) {
             }
         }
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
     }
 }
 
@@ -618,6 +617,7 @@ export function GettingCoordFromLocations(lat, lon, CountryName, ProvinceName, C
         Province.value = ProvinceName;
         RunAllFUnctions();
         MultipleCountries.value.splice(0, MultipleCountries.value.length);
+        IsCountriesListShowing.value = false;
     } catch (error) {
         console.log(error.message);
     }
@@ -647,18 +647,38 @@ export async function GetName() {
                     MultipleCountries.value.push(SingleCountryObject);
                 });
                 document.querySelector('.loading2').classList.remove('LoadingCompleted');
+                IsCountriesListShowing.value = true;
+                window.addEventListener('keydown', SelectCountry);
             }
             else {
-                setinput.value = 'Not a Valid City Name.'
+                setinput.value = 'Not a Valid Location Name.'
+                document.querySelector('.loading2').classList.remove('LoadingCompleted');
                 setTimeout(() => {
                     setinput.value = '';
-                }, 1500);
+                }, 1000);
             }
         }
     }
     catch (error) {
-        console.log("Error: ", error.message);
+        console.log(error.message);
     }
+}
+
+
+
+// A functionality to hide Shown Countries List when tap on outside the box.
+try {
+    document.addEventListener('click', (event) => {
+        if (IsCountriesListShowing.value) {
+            if (!(document.querySelector('.showhide')).contains(event.target)) {
+                MultipleCountries.value.splice(0, MultipleCountries.value.length);
+                IsCountriesListShowing.value = false;
+                window.removeEventListener('keydown', SelectCountry);
+            }
+        }
+    });
+} catch (error) {
+    console.log(error.message);
 }
 
 
@@ -670,11 +690,9 @@ function RunAllFUnctions() {
     try {
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.loading').classList.add('LoadingCompleted');
-
         });
         if (justRunOneTime) {
             document.querySelector('.loading').classList.add('LoadingCompleted');
-
         }
         hourlyTempArray.value.splice(0, hourlyTempArray.value.length);
         WeekyDaysTempArray.value.splice(0, WeekyDaysTempArray.value.length);
@@ -701,10 +719,43 @@ defaultLocation();
 
 
 window.addEventListener('keydown', (e) => {
-    if (e.key == 'Enter') {
-        GetName();
-    }
-    else if (e.key == 'Delete') {
-        setinput.value = '';
+    try {
+        if (e.key == 'Enter' && document.querySelector('.SearchInput') == document.activeElement && !e.shiftKey) {
+            GetName();
+        }
+        else if (e.key == 'Delete' && document.querySelector('.SearchInput') == document.activeElement) {
+            setinput.value = '';
+        }
+    } catch (error) {
+        console.log(error.message)
     }
 });
+
+
+
+
+// functionality to hover between list of countries and select one by shoft and enter key.
+export let selected = ref(-1);
+let SelectCountry = (e) => {
+    try {
+        if (!IsCountriesListShowing)
+            return;
+        switch (e.key) {
+            case 'ArrowUp':
+                selected.value = selected.value > 0 ? selected.value - 1 : MultipleCountries.value.length - 1;
+                break;
+            case 'ArrowDown':
+                selected.value = selected.value < MultipleCountries.value.length - 1 ? selected.value + 1 : 0;
+                break;
+            case 'Enter':
+                if (e.shiftKey) {
+                    let item = MultipleCountries.value[selected.value];
+                    GettingCoordFromLocations(item.lat, item.lon, item.CountryName, item.ProviceName, item.CityName, selected.value);
+                    window.removeEventListener('keydown', SelectCountry);
+                    break;
+                }
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}

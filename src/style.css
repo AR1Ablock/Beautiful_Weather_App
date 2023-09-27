@@ -132,6 +132,13 @@ body {
     transition: all .3s;
 }
 
+.hoveredItem {
+    background-color: #00c3ff;
+    transform: scale(1.05);
+    transition-timing-function: linear;
+    transition: all .3s;
+}
+
 .locationslist p {
     font-size: 2.6vmin !important;
     font-family: sans-serif;

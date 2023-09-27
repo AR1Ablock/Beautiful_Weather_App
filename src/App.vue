@@ -39,7 +39,7 @@
           <div class="loadingdiv"></div>
         </div>
         <div class="showhide" v-if="MultipleCountries">
-          <div class="locationslist" v-for="(item, index) in MultipleCountries" :key="index"
+          <div class="locationslist" :class="{'hoveredItem' : index == selected}" v-for="(item, index) in MultipleCountries" :key="index"
             @click="GettingCoordFromLocations(item.lat, item.lon, item.CountryName, item.ProviceName, item.CityName, index)">
             <p>{{ item.CountryName }}, {{ item.ProviceName }}, {{ item.CityName }}</p>
           </div>
@@ -216,5 +216,5 @@
 <script setup>
 import { ref } from 'vue';
 let ShowUnit = ref(false);
-import { setinput, GetName, hourlyTempArray, ChangeImage, CuttentConditionMessage, CuttentFeelsLike, CuttentHumidity, CuttentPressure, CuttentTemp, CuttentVisibility, CuttentWindSpeed, currenDate, currenWeekDay, currenMonth, CityLocation, Province, Country, SunRise, SunSet, WeekyDaysTempArray, AirQuality, AirQualityIndex, AirQualityIndexColor, GettingCurrentLocation, ChangeBackgroundVideo, MultipleCountries, GettingCoordFromLocations } from './logic';
+import { setinput, GetName, hourlyTempArray, ChangeImage, CuttentConditionMessage, CuttentFeelsLike, CuttentHumidity, CuttentPressure, CuttentTemp, CuttentVisibility, CuttentWindSpeed, currenDate, currenWeekDay, currenMonth, CityLocation, Province, Country, SunRise, SunSet, WeekyDaysTempArray, AirQuality, AirQualityIndex, AirQualityIndexColor, GettingCurrentLocation, ChangeBackgroundVideo, MultipleCountries, GettingCoordFromLocations, selected } from './logic';
 </script>
