@@ -1,0 +1,823 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}
+
+.loading {
+    z-index: 99;
+    width: 100vw;
+    height: 100vh;
+    background: #000000f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    position: fixed;
+    overflow: hidden;
+}
+
+.loading2 {
+    z-index: 99;
+    display: none;
+    position: absolute;
+    top: 10vmin;
+    overflow: hidden;
+}
+
+.LoadingCompleted {
+    display: flex;
+}
+
+.loadingdiv {
+    height: 5vmin;
+    border-top: 5px solid #ff5e00;
+    border-bottom: 5px solid #41ff00;
+    border-right: 5px solid #00c3ff;
+    border-left: 5px solid #ff0030;
+    width: 5vmin;
+    border-radius: 50%;
+    animation: loading linear infinite 1s;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.start {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 5%;
+    position: absolute;
+    top: 0;
+    font-family: sans-serif;
+}
+
+.cityname {
+    color: #484848;
+}
+
+.start p {
+    font-size: 5vmin;
+    font-weight: bold;
+    margin: 1vmin 0;
+    display: flex;
+    align-items: center;
+}
+
+.start p img {
+    transform: translateY(.5vmin);
+    width: 5vmin;
+}
+
+.start h1 {
+    font-size: 4vmin;
+    color: rgb(255, 255, 255);
+}
+
+.inputSearchCntrylistCon {
+    display: flex;
+    justify-content: center;
+}
+
+.start .SearchInput {
+    border: none;
+    outline: none;
+    padding: .9vmin;
+    border-radius: 2vmin;
+    color: blueviolet;
+    font-weight: bold;
+    font-size: 2vmin;
+}
+
+.showhide {
+    background: #ffffffcf;
+    color: black;
+    border-radius: 2vmin;
+    overflow: hidden;
+    position: absolute;
+    min-width: 40.8vmin;
+    z-index: 9 !important;
+    transform: translateY(4.5vmin);
+}
+
+.locationslist {
+    border-bottom: 2px solid aqua;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5vmin 1vmin;
+}
+
+.locationslist:hover {
+    background-color: #00c3ff;
+    transform: scale(1.05);
+    transition-timing-function: linear;
+    transition: all .3s;
+}
+
+.hoveredItem {
+    background-color: #00c3ff;
+    transform: scale(1.05);
+    transition-timing-function: linear;
+    transition: all .3s;
+}
+
+.locationslist p {
+    font-size: 2.6vmin !important;
+    font-family: sans-serif;
+}
+
+.SearchBtn {
+    padding: .8vmin 2vmin;
+    border: none;
+    outline: none;
+    font-size: 2vmin;
+    font-weight: bold;
+    border-radius: 5vmin;
+    margin-left: 1vmin;
+    background-color: rgb(255, 132, 0);
+    color: white;
+}
+
+.LocationBtn {
+    padding: .8vmin 1vmin .3vmin .8vmin;
+    font-size: 5vmin;
+    font-family: sans-serif;
+    font-weight: bolder;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 132, 0);
+    color: white;
+    border-radius: 20vmin;
+    transform: translateY(.5vmin);
+}
+
+.SearchBtn:hover,
+.LocationBtn:hover {
+    background-color: rgb(255, 172, 84);
+    transition-timing-function: ease-in-out;
+    transition: all .3s;
+}
+
+.SearchBtn:active,
+.LocationBtn:active {
+    background-color: rgb(255, 172, 84);
+    transform: scale(.8);
+    transition-timing-function: ease-in-out;
+    transition: all .5s;
+}
+
+.bgvideo {
+    height: 60vh;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+}
+
+.weatherDetails {
+    position: relative;
+    font-family: sans-serif;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    bottom: 30vmin;
+    gap: 5vmin;
+    left: 2vmin;
+    height: 0;
+}
+
+.Date {
+    display: none;
+}
+
+
+.bgtemp {
+    position: relative;
+    font-size: 8vmin;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.bgcondition {
+    position: relative;
+    font-size: 4.5vmin;
+    font-style: italic;
+    right: 3vmin;
+}
+
+.hourlytime {
+    display: flex;
+    gap: 0 2.4vmin;
+    position: relative;
+}
+
+.hourlytime div {
+    text-align: center;
+    font-size: 2.5vmin;
+    font-family: sans-serif;
+    letter-spacing: .5px;
+    color: #62cff7;
+    /*    color: #00a8ff; */
+    font-weight: 600;
+    min-width: 11vmin;
+    transform: translateX(-1vmin);
+}
+
+.hourlytime * {
+    margin: .3vmin 0;
+}
+
+.img img {
+    width: 6vmin;
+}
+
+.wrapper {
+    width: 95vw;
+    /* background-color: rgb(82, 44, 44); */
+    margin: 0 2.5vw;
+    position: relative;
+    bottom: .5vmin;
+    display: flex;
+
+}
+
+.smallPanel {
+    /*     background-color: rgb(49, 109, 89); */
+    width: 40vw;
+    margin-left: 1vmin;
+    margin-right: 5vmin;
+    padding: 5vmin 0;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.smallPanel_1 {
+    background-color: rgb(18, 114, 166);
+    border-radius: 1vmin;
+    padding: 2vmin;
+    height: 40vh;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.smallPanel_1 * {
+    margin: .8vmin;
+}
+
+.smallPanel_1 h2 {
+    font-size: 3vmin;
+}
+
+.smallPanel_1 h1 {
+    font-size: 8vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: solid rgb(255, 255, 255) 2px;
+}
+
+.smallPanel_1 div {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.3vmin;
+}
+
+.smallPanel_1 h1 span img {
+    width: 10vmin;
+    transform: translateY(1vmin);
+}
+
+.smallPanel_1 p span img {
+    transform: translateY(2.5vmin);
+    width: 4vmin;
+}
+
+.SmallPanelHeading {
+    font-family: sans-serif;
+    font-size: 4vmin;
+}
+
+.smallPanel_2 {
+    background-color: chocolate;
+    border-radius: 1vmin;
+    min-height: 40vmin;
+    font-size: 2.4vmin;
+    font-weight: bold;
+    grid-template-rows: repeat(4, 1fr);
+    padding: 1vmin 0;
+    font-family: ui-sans-serif;
+}
+
+.day {
+    transform: translateY(.7vmin);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 3vmin 0 !important;
+}
+
+.day h2 {
+    margin: 0;
+    display: flex;
+    font-size: 3vmin;
+    font-family: sans-serif;
+    margin-left: 4vmin !important;
+}
+
+.day h2 * {
+    margin: 0 .2vmin !important;
+}
+
+.day h2 p {
+    font-size: 1.8vmin;
+    padding: 0 .2vmin;
+}
+
+.day h2 span img {
+    width: 4vmin;
+    height: auto;
+    transform: translateY(-.5vmin);
+}
+
+.smallPanel_2 div,
+.smallPanel_2 h2,
+.smallPanel_2 h2 *,
+.smallPanel_2 p {
+    margin: 0;
+}
+
+/* 2nd Panel */
+
+.BigPanelHeading {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 5vmin;
+}
+
+.SecondLastBigPanel {
+    width: 50vw;
+    /*   background-color: rebeccapurple; */
+}
+
+
+/*  ................... */
+.Wind_Sun_Humi_Pressure {
+    display: grid;
+    gap: 5vmin;
+    grid-template-columns: repeat(2, 1fr);
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.Wind_Sun_Humi_Pressure p {
+    font-size: 2.2vmin;
+    margin: 1vmin;
+    font-weight: bold;
+}
+
+.Wind_Sun_Humi_Pressure h1 {
+    font-size: 3.5vmin;
+}
+
+.WHSP_Parts_1 {
+    background-color: goldenrod;
+    height: 20vh;
+    text-align: center;
+    padding: 2.2vmin 1vmin;
+    border-radius: 2vmin;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.airindex {
+    display: flex;
+    justify-content: space-around;
+    font-size: 2.4vmin;
+    font-weight: 600;
+}
+
+.airindex .good {
+    background-color: rgb(0 223 57);
+    padding: .5vmin 1vmin;
+    border-radius: 5vmin;
+    height: 3vmin;
+    transform: translateY(-.8vmin);
+}
+
+.airindex_info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.airindex_info h1 {
+    font-size: 3vmin;
+    margin: 0 .5vmin;
+    cursor: pointer;
+}
+
+.airindex_info h1 span {
+    font-size: 2vmin;
+    margin: 0 0.3vmin;
+}
+
+.airindex_info span img {
+    width: 8vmin;
+    transform: translateY(-1vmin) rotate(90deg);
+}
+
+.WHSP_Parts_2 {
+    background-color: darkblue;
+    height: 20vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2.5vmin 1vmin;
+    border-radius: 2vmin;
+    align-items: center;
+}
+
+.WHSP_Parts_2 img {
+    width: 7vmin;
+    transform: translateY(1.5vmin);
+    margin: 0 1vmin;
+}
+
+.WHSP_Parts {
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    justify-content: space-around;
+    background-color: coral;
+    padding: 1.5vmin 2vmin;
+    border-radius: 2vmin;
+    gap: .9vmin;
+}
+
+.WHSP_Parts img {
+    width: 5vmin;
+    transform: translateY(1.5vmin);
+}
+
+.TimesHeading {
+    text-align: start;
+    font-size: 4.5vmin;
+    margin: 2vmin 0;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.times {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    font-size: 2.6vmin;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.timesPart3 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: .5vmin;
+}
+
+.timesPart3 img {
+    width: 5vmin;
+}
+
+.timesPart3 .windDiv {
+    text-align: center;
+    background-color: lightseagreen;
+    border-radius: 2vmin;
+    margin: 0 10%;
+    width: 90%;
+}
+
+.timesPart3 .windDiv p {
+    font-size: 2.6vmin;
+    overflow-x: auto;
+}
+
+.windDiv p::-webkit-scrollbar {
+    display: none;
+}
+
+/* Toogle Class */
+.Great {
+    background-color: rgb(0, 149, 255) !important;
+}
+
+.Good {
+    background-color: rgb(0, 238, 87) !important;
+}
+
+.Moderate {
+    background-color: rgb(221, 221, 0) !important;
+}
+
+.Sensitive {
+    background-color: rgb(255, 136, 0) !important;
+}
+
+.Unhealthy {
+    background-color: rgb(0, 64, 255) !important;
+}
+
+.Dangerous {
+    background-color: rgb(255, 0, 0) !important;
+}
+
+@media (min-width: 1250px) {
+    .good {
+        height: 2.8vmin !important;
+    }
+
+    .airindex_info span img {
+        width: 8vmin;
+        transform: translateX(1vmin) translateY(-1vmin) rotate(90deg);
+    }
+}
+
+
+@media (max-width: 1250px) {
+
+    .Date {
+        display: none;
+    }
+
+    .airindex_info span img {
+        position: relative;
+        left: 20%;
+        transform: rotate(0) translateY(-1vmin);
+    }
+
+    .times {
+        grid-template-columns: repeat(1, 1fr);
+        position: relative;
+        top: 1%;
+        right: 59vmin;
+    }
+
+    .times div {
+        width: 17vmin;
+    }
+
+    .TimesHeading {
+        position: relative;
+        right: 10%;
+        top: 1%;
+        right: 23vmin;
+    }
+
+
+    .Wind_Sun_Humi_Pressure {
+        display: block;
+    }
+
+    .WHSP_Parts_1 {
+        border-radius: 15vmin;
+    }
+
+    .WHSP_Parts_2 {
+        border-radius: 15vmin;
+    }
+
+    .WHSP_Parts {
+        border-radius: 15vmin;
+    }
+
+}
+
+@media (max-width:880px) {
+    .airindex_info span img {
+        width: 7vmin;
+    }
+}
+
+
+/* @media (min-width:730px) and ((max-width:1000px)) {
+    .day h2 {
+        margin-left: 0 !important;
+    }
+} */
+
+
+@media (max-width:900px) {
+
+    .bgvideo {
+        height: 50vh;
+    }
+
+    .start {
+        top: 1.5vmin;
+    }
+
+    .SearchInput {
+        height: 4vmin;
+        width: 25vmin;
+        font-size: 2.6vmin;
+    }
+
+    .Date {
+        display: block;
+        font-size: 3vmin;
+        margin: 0;
+    }
+
+    .Date p {
+        margin: 0;
+    }
+
+    .Date img {
+        width: 3vmin;
+    }
+
+    .showhide {
+        transform: translateY(6vmin);
+    }
+
+    .SearchBtn {
+        padding: 1vmin 2vmin;
+        border: none;
+        outline: none;
+        font-size: 2.6vmin;
+    }
+
+    .LocationBtn {
+        padding: .6vmin 1.3vmin .1vmin 1.3vmin;
+        border-radius: 20vmin;
+    }
+
+    .bgtemp {
+        font-size: 12vmin;
+        position: relative;
+        top: 1vmin;
+    }
+
+    .bgcondition {
+        font-size: 6vmin;
+    }
+
+    .hourlytime div {
+        font-size: 2.3vmin;
+    }
+
+    .hourlytime {
+        gap: 0 1.5vmin;
+    }
+
+    .day h2 {
+        font-size: 4vmin;
+        margin-left: 5vmin;
+    }
+
+    .day h2 p {
+        font-size: 2.5vmin;
+    }
+
+    .weatherDetails {
+        bottom: 40vmin;
+        gap: 3vmin;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        text-align: center;
+    }
+
+    .smallPanel {
+        width: auto;
+    }
+
+    .smallPanel_2 {
+        font-size: 4vmin;
+        position: relative;
+        bottom: 4vmin;
+    }
+
+    .smallPanel_2 .day span img {
+        width: 6vmin;
+    }
+
+    .SecondLastBigPanel {
+        grid-row-start: 1;
+        width: auto;
+    }
+
+    .Wind_Sun_Humi_Pressure {
+        display: grid;
+        gap: 2vmin;
+    }
+
+    .Wind_Sun_Humi_Pressure p {
+        font-size: 3.2vmin;
+    }
+
+    .Wind_Sun_Humi_Pressure h1 {
+        font-size: 3vmin;
+        margin: 0 .3vmin;
+    }
+
+    .WHSP_Parts_1,
+    .WHSP_Parts_2 {
+        border-radius: 2vmin;
+        height: 25vmin;
+    }
+
+    .good {
+        height: 4vmin !important;
+    }
+
+    .smallPanel {
+        display: grid;
+    }
+
+    .Small_Panel_Container {
+        grid-row-start: 1;
+        margin-bottom: 8vmin;
+        position: relative;
+        left: 2vmin;
+    }
+
+    .smallPanel_1 {
+        display: none;
+    }
+
+    .airindex_info span img {
+        transform: translateY(-1vmin) rotate(90deg);
+    }
+
+    .WHSP_Parts {
+        border-radius: 2vmin;
+        height: 25vmin;
+    }
+
+    .WHSP_Parts img {
+        width: 6vmin;
+        transform: translateY(1.5vmin);
+    }
+
+    .times {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        font-size: 3.5vmin;
+        right: 1.5vmin;
+    }
+
+    .TimesHeading {
+        right: auto;
+    }
+
+    .SmallPanelHeading {
+        position: relative;
+        bottom: 3vmin;
+    }
+
+    .timesPart3 {
+        gap: 5vmin;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .times div {
+        min-width: 24vmin;
+        width: auto;
+    }
+
+    .times div img {
+        width: 8vmin !important;
+    }
+
+    .timesPart3 .windDiv p {
+        font-size: 3.5vmin;
+    }
+}
+
+@media (max-width: 240px) {
+    .weatherDetails {
+        bottom: 44vmin !important;
+    }
+}
+
+@media (max-width: 1250px) and (min-width: 900px) {
+    .times {
+        right: 47vmin;
+    }
+}
