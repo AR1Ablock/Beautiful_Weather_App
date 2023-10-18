@@ -48,6 +48,9 @@
         <button class="SearchBtn" @click="GetName()">Search</button>
       </div>
       <button class="LocationBtn" @click="GettingCurrentLocation()"> <span>⦿</span></button>
+      <div class="loading2" style="right: 0;" >
+          <div class="loadingdiv"></div>
+        </div>
     </div>
 
     <div class="wrapper"> <!-- Wrapper Start -->
@@ -65,6 +68,7 @@
           </div>
         </div>
 
+      <div class="Small_Panel_Container">
         <h3 class="SmallPanelHeading">Weekly Forcast</h3>
 
         <div class="smallPanel_2">
@@ -74,9 +78,9 @@
             <p class="WeekDay">{{ item.Date }} {{ item.Month }}</p>
             <p>{{ item.Day }}</p>
           </div>
-
-
         </div>
+
+      </div>
 
       </div> <!-- Small Panel End -->
 
@@ -178,6 +182,8 @@
 
         </div>
 
+    <div>
+    
         <h2 class="TimesHeading">Wind Speed</h2>
 
         <div class="times"> <!-- Times Start -->
@@ -203,6 +209,8 @@
           </div>
 
         </div> <!-- times end -->
+
+      </div>
 
       </div> <!-- Second BigPanel End -->
 

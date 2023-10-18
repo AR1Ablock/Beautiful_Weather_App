@@ -21,13 +21,8 @@ body {
 
 .loading2 {
     z-index: 99;
-    min-width: 5%;
-    max-height: 8%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     display: none;
-    position: fixed;
+    position: absolute;
     top: 10vmin;
     overflow: hidden;
 }
@@ -260,7 +255,8 @@ body {
 .smallPanel {
     /*     background-color: rgb(49, 109, 89); */
     width: 40vw;
-    margin: 0 5vmin;
+    margin-left: 1vmin;
+    margin-right: 5vmin;
     padding: 5vmin 0;
     text-align: justify;
     display: flex;
@@ -319,7 +315,6 @@ body {
     font-family: sans-serif;
     font-size: 4vmin;
 }
-
 
 .smallPanel_2 {
     background-color: chocolate;
@@ -387,7 +382,6 @@ body {
 .Wind_Sun_Humi_Pressure {
     display: grid;
     gap: 5vmin;
-    width: 50vw;
     grid-template-columns: repeat(2, 1fr);
     font-family: sans-serif;
     text-align: center;
@@ -466,7 +460,6 @@ body {
     margin: 0 1vmin;
 }
 
-
 .WHSP_Parts {
     display: flex;
     height: 20vh;
@@ -514,7 +507,7 @@ body {
     background-color: lightseagreen;
     border-radius: 2vmin;
     margin: 0 10%;
-    width: 85%;
+    width: 90%;
 }
 
 .timesPart3 .windDiv p {
@@ -524,6 +517,31 @@ body {
 
 .windDiv p::-webkit-scrollbar {
     display: none;
+}
+
+/* Toogle Class */
+.Great {
+    background-color: rgb(0, 149, 255) !important;
+}
+
+.Good {
+    background-color: rgb(0, 238, 87) !important;
+}
+
+.Moderate {
+    background-color: rgb(221, 221, 0) !important;
+}
+
+.Sensitive {
+    background-color: rgb(255, 136, 0) !important;
+}
+
+.Unhealthy {
+    background-color: rgb(0, 64, 255) !important;
+}
+
+.Dangerous {
+    background-color: rgb(255, 0, 0) !important;
 }
 
 @media (min-width: 1250px) {
@@ -553,23 +571,19 @@ body {
     .times {
         grid-template-columns: repeat(1, 1fr);
         position: relative;
-        top: 2%;
-        right: 48vmin;
+        top: 1%;
+        right: 59vmin;
     }
 
     .times div {
         width: 17vmin;
     }
 
-    .timesPart3 {
-        width: 85%;
-    }
-
     .TimesHeading {
         position: relative;
         right: 10%;
         top: 1%;
-        text-align: unset;
+        right: 23vmin;
     }
 
 
@@ -597,17 +611,19 @@ body {
     }
 }
 
-@media (min-width:730px) and ((max-width:850px)) {
+
+/* @media (min-width:730px) and ((max-width:1000px)) {
     .day h2 {
         margin-left: 0 !important;
     }
-}
+} */
 
-@media (max-width:730px) {
+
+@media (max-width:900px) {
 
     .bgvideo {
-    height: 50vh;
-}
+        height: 50vh;
+    }
 
     .start {
         top: 1.5vmin;
@@ -618,7 +634,6 @@ body {
         width: 25vmin;
         font-size: 2.6vmin;
     }
-
 
     .Date {
         display: block;
@@ -650,7 +665,6 @@ body {
         border-radius: 20vmin;
     }
 
-
     .bgtemp {
         font-size: 12vmin;
         position: relative;
@@ -669,6 +683,10 @@ body {
         gap: 0 1.5vmin;
     }
 
+    .day{
+        margin: 5vmin 0 !important;
+    }
+
     .day h2 {
         font-size: 4vmin;
         margin-left: 5vmin;
@@ -683,27 +701,21 @@ body {
         gap: 3vmin;
     }
 
-    .smallPanel {
-        position: relative;
-        top: 67vmin;
-        right: 2%;
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        text-align: center;
     }
 
-    .smallPanel_1 {
-        display: none;
+    .smallPanel {
+        width: auto;
     }
 
     .smallPanel_2 {
-        height: 53vmin;
-        width: 95vmin;
-        position: relative;
-        right: 4.5%;
         font-size: 4vmin;
-    }
-
-    .SmallPanelHeading {
         position: relative;
-        left: 60%;
+        bottom: 8vmin;
+        min-height: auto;
     }
 
     .smallPanel_2 .day span img {
@@ -711,15 +723,8 @@ body {
     }
 
     .SecondLastBigPanel {
-        position: relative;
-        top: 61vmin;
-        right: 53.5%;
-        top: 0;
-    }
-
-    .BigPanelHeading {
-        position: relative;
-        left: 53%;
+        grid-row-start: 1;
+        width: auto;
     }
 
     .Wind_Sun_Humi_Pressure {
@@ -736,15 +741,29 @@ body {
         margin: 0 .3vmin;
     }
 
+    .WHSP_Parts_1,
+    .WHSP_Parts_2 {
+        border-radius: 2vmin;
+        height: 25vmin;
+    }
+
     .good {
         height: 4vmin !important;
     }
 
-    .WHSP_Parts_1,
-    .WHSP_Parts_2 {
-        width: 46vmin;
-        border-radius: 2vmin;
-        height: 25vmin;
+    .smallPanel {
+        display: grid;
+    }
+
+    .Small_Panel_Container {
+        grid-row-start: 1;
+        margin-bottom: 8vmin;
+        position: relative;
+        left: 2vmin;
+    }
+
+    .smallPanel_1 {
+        display: none;
     }
 
     .airindex_info span img {
@@ -761,20 +780,21 @@ body {
         transform: translateY(1.5vmin);
     }
 
-    .TimesHeading {
-        position: relative;
-        right: 13%;
-        top: 70vmin;
-        left: 72%;
-        text-align: unset;
-    }
-
     .times {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         font-size: 3.5vmin;
-        left: 12%;
-        top: 70vmin;
+        right: 1.5vmin;
+    }
+
+    .TimesHeading {
+        right: auto;
+    }
+
+    .SmallPanelHeading {
+        position: relative;
+        bottom: 6.5vmin;
+        font-size: 5vmin;
     }
 
     .timesPart3 {
@@ -782,16 +802,9 @@ body {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .relocate_1st_Part {
-        position: static;
-    }
-
-    .relocate_2nd_Part {
-        position: static;
-    }
-
     .times div {
-        width: 24vmin;
+        min-width: 24vmin;
+        width: auto;
     }
 
     .times div img {
@@ -803,34 +816,14 @@ body {
     }
 }
 
-
 @media (max-width: 240px) {
     .weatherDetails {
         bottom: 44vmin !important;
     }
 }
 
-/* Toogle Class */
-.Great {
-    background-color: rgb(0, 149, 255) !important;
-}
-
-.Good {
-    background-color: rgb(0, 238, 87) !important;
-}
-
-.Moderate {
-    background-color: rgb(221, 221, 0) !important;
-}
-
-.Sensitive {
-    background-color: rgb(255, 136, 0) !important;
-}
-
-.Unhealthy {
-    background-color: rgb(0, 64, 255) !important;
-}
-
-.Dangerous {
-    background-color: rgb(255, 0, 0) !important;
+@media (max-width: 1250px) and (min-width: 900px) {
+    .times {
+        right: 47vmin;
+    }
 }

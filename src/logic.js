@@ -1,4 +1,4 @@
-import { ref, onUnmounted } from "vue";
+import { ref } from "vue";
 
 // Videos
 import Cloudy from './assets/videos/Cloudy.mp4';
@@ -506,7 +506,9 @@ async function GettingHourlyAndWeeklyWeather() {
                 }
             }
         }
+        setTimeout(() => {
         document.querySelector('.loading').classList.remove('LoadingCompleted');
+        }, 500);
     } catch (error) {
         console.log(error.message);
     }
@@ -571,16 +573,49 @@ async function GettingCurrentFullWeather() {
 export function GettingCurrentLocation() {
     try {
         if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    latitude.value = position.coords.latitude;
-                    longitude.value = position.coords.longitude;
-                    if (latitude.value !== '' && longitude.value !== '') {
-                        console.log('Current Location\n\n', 'latitude = ', latitude.value, 'longitude = ', longitude.value);
-                        RunAllFUnctions();
-                        ReverseGeoCoding_NamesFromCordLatLon();
-                    }
-                });
+            navigator.permissions.query({name:'geolocation'}).then(function(result) {
+                if (result.state === 'granted') {
+                    // geolocation access is granted
+                    document.querySelector('.LocationBtn').nextElementSibling.classList.add('LoadingCompleted');
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            latitude.value = position.coords.latitude;
+                            longitude.value = position.coords.longitude;
+                            if (latitude.value !== undefined && longitude.value !== undefined) {
+                                console.log('Current Location\n\n', 'latitude = ', latitude.value, 'longitude = ', longitude.value);
+                                RunAllFUnctions();
+                                ReverseGeoCoding_NamesFromCordLatLon();
+                                document.querySelector('.LocationBtn').nextElementSibling.classList.remove('LoadingCompleted');
+                            }
+                            else{
+                                document.querySelector('.LocationBtn').nextElementSibling.classList.remove('LoadingCompleted');
+                                setinput.value = 'No Cord Found';
+                                setTimeout(() => {
+                                    setinput.value = '';
+                                }, 500);
+                                return;
+                            }
+                        },(error)=> setinput.value = error.message);
+
+                } else if (result.state === 'prompt') {
+                    setinput.value = 'Asking Permission';
+                    setTimeout(() => {
+                        setinput.value = '';
+                    }, 500);
+
+                } else if (result.state === 'denied') {
+                    document.querySelector('.LocationBtn').nextElementSibling.classList.remove('LoadingCompleted');
+                    setinput.value = 'Denied Permission';
+                    setTimeout(() => {
+                        setinput.value = '';
+                    }, 500);
+                    return;
+                }
+            });
+            
+        } else {
+            console.log('geolocation not available in this browser');
+            return;
         }
     } catch (error) {
         console.log(error.message)
