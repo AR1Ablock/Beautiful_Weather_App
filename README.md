@@ -6,10 +6,6 @@
 
 🌐 **[colour-weather.web.app](https://colour-weather.web.app/)**
 
-## Preview
-
-![Color Weather App — Desktop Preview](./screenshots/Desktop.png)
-
 ## Overview
 
 Color Weather App is a Vue 3 weather application designed to provide detailed weather information without overwhelming the user.
@@ -158,7 +154,7 @@ Before running Color Weather App locally, make sure you have:
 ### Clone the repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/AR1Ablock/Color_Weather_App.git
 cd Color_Weather_App
 ```
 
