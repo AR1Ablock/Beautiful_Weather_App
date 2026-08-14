@@ -21,8 +21,9 @@
     <div class="hero_section">
 
 
-      <video autoplay oncanplay="this.playbackRate = 0.7;" loop muted class="bgvideo" :src="ChangeBackgroundVideo()">
-      </video>
+      <video ref="videoRef" autoplay loop playsinline muted class="bgvideo" :src="videoSrc" @canplay="handleCanPlay"
+        @pause="handlePause"></video>
+
 
       <div class="start">
         <p class="cityname"> <span> <img src="./assets/icons/location.png" alt=""> </span> {{ CityLocation }}</p>
@@ -314,7 +315,73 @@
 </style>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed, watch, onMounted, nextTick } from 'vue';
 let ShowUnit = ref(false);
 import { setinput, GetName, hourlyTempArray, ChangeImage, CuttentConditionMessage, CuttentFeelsLike, CuttentHumidity, CuttentPressure, CuttentTemp, CuttentVisibility, CuttentWindSpeed, currenDate, currenWeekDay, currenMonth, CityLocation, Province, Country, SunRise, SunSet, WeekyDaysTempArray, AirQuality, AirQualityIndex, AirQualityIndexColor, GettingCurrentLocation, ChangeBackgroundVideo, MultipleCountries, GettingCoordFromLocations, selected, Starting_Overlay, Network_Error, defaultLocation, toast, closeNotify, Locating_Names, locating, SelectCountry } from './logic';
+
+
+const videoRef = ref(null);
+
+const videoSrc = computed(() => ChangeBackgroundVideo());
+
+// Force mute and play
+const attemptPlay = () => {
+  const video = videoRef.value;
+  if (!video) return;
+
+  // 🔥 Critical: set BOTH muted and defaultMuted
+  video.muted = true;
+  video.defaultMuted = true;
+  video.volume = 0; // extra safety
+
+  const playPromise = video.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(err => {
+      console.warn('Autoplay was prevented:', err);
+      // optional: retry after a delay
+    });
+  }
+};
+
+// Called when the video can play
+const handleCanPlay = () => {
+  if (videoRef.value) {
+    videoRef.value.playbackRate = 0.7;
+    attemptPlay();
+  }
+};
+
+// Called whenever the video is paused (including automatically)
+const handlePause = () => {
+  setTimeout(() => {
+    const video = videoRef.value;
+    if (video && video.paused) {
+      attemptPlay();
+    }
+  }, 50);
+};
+
+// Watch source changes (e.g., background video updates)
+watch(videoSrc, async (newSrc) => {
+  const video = videoRef.value;
+  if (video && newSrc) {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.src = newSrc;
+    video.load(); // force reload to trigger canplay
+  }
+});
+
+// On mount: set muted and defaultMuted, then let canplay handle playback
+onMounted(async () => {
+  await nextTick();
+  const video = videoRef.value;
+  if (video) {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+  }
+  // Do NOT call play() here – rely on canplay event
+});
+
 </script>

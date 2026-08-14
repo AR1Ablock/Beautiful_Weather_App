@@ -134,6 +134,8 @@ img {
     display: block;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
+    pointer-events: none;
+    user-select: none;
 }
 
 /* ===== TOP BAR (START) ===== */
@@ -251,12 +253,52 @@ img {
     right: 0;
     background: rgba(255, 255, 255, 0.9);
     color: black;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     z-index: 11;
     margin-top: 0.4rem;
     box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.3);
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
 }
+
+/* Small screens (mobile) */
+@media (max-width: 600px) {
+    .showhide {
+        max-height: 200px;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .showhide {
+        max-height: 250px;
+    }
+}
+
+
+.showhide::-webkit-scrollbar {
+    width: 8px;
+    /* thin scrollbar */
+}
+
+.showhide::-webkit-scrollbar-track {
+    background: transparent;
+    /* track background */
+}
+
+.showhide::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+.showhide::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 .locationslist {
     padding: 0.6em 1em;

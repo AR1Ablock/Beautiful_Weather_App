@@ -68,6 +68,7 @@ export const toast = reactive({
 });
 
 let toastTimer = null;
+let Open_WeatherMap_API_KEY = 'ca69ed71e3e9415e36b49cc4683189f6';
 
 
 // for get things time related things.
@@ -249,6 +250,7 @@ export function ChangeBackgroundVideo() {
         }
     } catch (error) {
         console.log(error.message);
+        return 'Cloudy';
     }
 }
 
@@ -273,7 +275,6 @@ export function ChangeImage(summary, time) {
                 case 'Partly clear':
                 case 'Partly cloudy':
                 case 'Partly clouds':
-                case 'Partly sunny':
                 case 'Cloudy':
                 case 'Cloud':
                 case 'Clouds':
@@ -417,7 +418,7 @@ function RainChancesPercentage(condition) {
 // main function to fetch Hourly  and weekly of 5 days data.
 async function GettingHourlyAndWeeklyWeather() {
     try {
-        const url1 = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude.value}&lon=${longitude.value}&appid=ca69ed71e3e9415e36b49cc4683189f6`;
+        const url1 = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude.value}&lon=${longitude.value}&appid=${Open_WeatherMap_API_KEY}`;
         let rawdata = await fetch(url1);
         let data = await rawdata.json();
         for (let i = 1; i <= 8; i++) {
@@ -529,7 +530,7 @@ async function GettingHourlyAndWeeklyWeather() {
 // return air quality.
 export async function GettingCurrentWeatherAirDetails() {
     try {
-        const url3 = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude.value}&lon=${latitude.value}&appid=ca69ed71e3e9415e36b49cc4683189f6`;
+        const url3 = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${latitude.value}&lon=${longitude.value}&appid=${Open_WeatherMap_API_KEY}`;
         let rawdata = await fetch(url3);
         let data = await rawdata.json();
         AirQuality.value = {
@@ -549,7 +550,7 @@ export async function GettingCurrentWeatherAirDetails() {
 // main function to fetching all current data.
 async function GettingCurrentFullWeather() {
     try {
-        let url4 = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude.value}&lon=${longitude.value}&appid=ca69ed71e3e9415e36b49cc4683189f6`;
+        let url4 = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude.value}&lon=${longitude.value}&appid=${Open_WeatherMap_API_KEY}`;
         let rawdata = await fetch(url4);
         let data = await rawdata.json();
         SRSSCT.value = {
@@ -691,7 +692,7 @@ function handleGeolocationError(error) {
 // function attached execute with above one.
 async function ReverseGeoCoding_NamesFromCordLatLon() {
     try {
-        let url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude.value}&lon=${longitude.value}&limit=1&appid=ca69ed71e3e9415e36b49cc4683189f6`;
+        let url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude.value}&lon=${longitude.value}&limit=1&appid=${Open_WeatherMap_API_KEY}`;
         let rawdata = await fetch(url);
         let data = await rawdata.json();;
         CityLocation.value = data[0].name;
@@ -773,7 +774,7 @@ export async function GetName() {
 
         MultipleCountries.value.splice(0, MultipleCountries.value.length);
 
-        let url = `https://api.openweathermap.org/geo/1.0/direct?q=${setinput.value}&limit=5&appid=ca69ed71e3e9415e36b49cc4683189f6`;
+        let url = `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(setinput.value.trim())}&limit=5&appid=${Open_WeatherMap_API_KEY}`;
 
         if (setinput.value.trim() !== '') {
             let rawdata = await fetch(url);
