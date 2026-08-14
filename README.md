@@ -348,13 +348,27 @@ For a public production application, use a backend or server-side proxy to prote
 
 - **Live Application:** [https://colour-weather.web.app/](https://colour-weather.web.app/)
 
-![Screenshot from 2023-09-19 13-53-08](https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/490cb6a7-11cb-48c1-a288-3b7de2b18991)
+## Preview
 
-![Screenshot from 2023-09-07 04-01-54](https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/138d4e33-9ef0-4023-9b6e-9ad2e8811a7c)
-
-![Screenshot from 2023-09-07 04-00-20](https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/3ecc7912-f9c6-4fd0-96c0-e6809139cd30)
-
-![Screenshot from 2023-09-19 13-53-08](https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/607ffb6f-7454-4ce5-ac32-3d2b76b43d7a)
-
-![Screenshot from 2023-09-07 04-01-28](https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/62a20419-4c8f-4409-b6cd-e000fc7ad41b)
-
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/490cb6a7-11cb-48c1-a288-3b7de2b18991" width="100%" style="border-radius: 12px; border: 2px solid #3a3a3a;">
+    </td>
+    <td align="center" width="33%">
+      <img src="https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/138d4e33-9ef0-4023-9b6e-9ad2e8811a7c" width="100%" style="border-radius: 12px; border: 2px solid #3a3a3a;">
+    </td>
+    <td align="center" width="33%">
+      <img src="https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/3ecc7912-f9c6-4fd0-96c0-e6809139cd30" width="100%" style="border-radius: 12px; border: 2px solid #3a3a3a;">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="33%">
+      <img src="https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/607ffb6f-7454-4ce5-ac32-3d2b76b43d7a" width="100%" style="border-radius: 12px; border: 2px solid #3a3a3a;">
+    </td>
+    <td align="center" width="33%">
+      <img src="https://github.com/AR1Ablock/Beautiful_Weather_App/assets/78879680/62a20419-4c8f-4409-b6cd-e000fc7ad41b" width="100%" style="border-radius: 12px; border: 2px solid #3a3a3a;">
+    </td>
+    <td></td>
+  </tr>
+</table>
